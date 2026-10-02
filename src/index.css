@@ -2,6 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Light by default, dark when the system asks for it. Values are "r g b" so Tailwind opacity works. */
+:root {
+  --bg: 250 249 245;
+  --panel: 240 238 230;
+  --line: 214 210 197;
+  --fg: 31 35 40;
+  --muted: 92 97 105;
+  --accent: 178 58 8;
+  --ok: 18 110 52;
+  --warn: 154 68 4;
+  --key: 29 78 216;
+  --hot: 196 28 28;
+  --dot: 31 35 40 / 0.07;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: 13 17 23;
+    --panel: 22 27 34;
+    --line: 48 54 61;
+    --fg: 201 209 217;
+    --muted: 125 133 144;
+    --accent: 255 143 94;
+    --ok: 86 211 100;
+    --warn: 242 204 96;
+    --key: 121 192 255;
+    --hot: 255 92 92;
+    --dot: 201 209 217 / 0.07;
+    color-scheme: dark;
+  }
+}
+
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+  background-color: rgb(var(--bg));
+  background-image: radial-gradient(rgb(var(--dot)) 1px, transparent 1px);
+  background-size: 22px 22px;
+  color: rgb(var(--fg));
+}
+
+::selection { background: rgb(var(--accent) / 0.3); }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+.rise { animation: rise 0.4s ease-out both; }
+.cursor { animation: blink 1.1s steps(1) infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rise, .cursor { animation: none; }
 }

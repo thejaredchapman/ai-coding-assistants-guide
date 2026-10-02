@@ -1,7 +1,7 @@
 {
-  "name": "claude-code-guide",
+  "name": "ai-coding-assistants-guide",
   "version": "1.0.0",
-  "description": "Interactive Claude Code setup and usage guide for engineering teams",
+  "description": "Interactive, vendor-neutral guide to AI coding assistants: pick a tool, use it safely, and learn Claude Code in depth",
   "type": "module",
   "scripts": {
     "dev": "vite",
